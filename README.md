@@ -10,7 +10,7 @@ allprojects {
   ```
   ```
   dependencies {
-	        implementation 'com.github.AnkanHalder:CustomAnimationAndDesign:1.0'
+	        implementation 'com.github.AnkanHalder:CustomAnimationAndDesign:1.1'
 	}
   ```
 
