@@ -24,7 +24,9 @@ public class CustomDialog extends AppCompatDialogFragment {
     OnOptionClick optionClick;
     private FragmentManager manager;
     private Context context;
-    private boolean cancelable = true;
+    private String animation;
+    private boolean outsideClickcancelable = true;
+    private int duration=2000;
 
     @SuppressLint("ValidFragment")
     public CustomDialog(Context context){
@@ -65,9 +67,17 @@ public class CustomDialog extends AppCompatDialogFragment {
         });
 
         AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).setView(view).setTitle(title).create();
-        alertDialog.setCanceledOnTouchOutside(cancelable);
+        alertDialog.setCanceledOnTouchOutside(outsideClickcancelable);
 
         return alertDialog;
+    }
+
+    public void setAnimation(String animation){
+        this.animation = animation;
+    }
+
+    public void setDuration(int duration){
+        this.duration = duration;
     }
 
     @Override
@@ -104,13 +114,39 @@ public class CustomDialog extends AppCompatDialogFragment {
         this.title = title;
     }
     public void setCanceledOnTouchOutside(boolean cancelable){
-        this.cancelable=cancelable;
+        this.outsideClickcancelable=cancelable;
     }
 
     public interface OnOptionClick{
         void onResult(boolean status);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        if(animation != null) {
+            final View decorView = getDialog().getWindow().getDecorView();
+            if (decorView != null) {
+                switch (animation) {
+                    case "fade":
+                        AnimationAlert.fade(decorView).setDuration(duration).start();
+                        break;
+                    case "scale":
+                        AnimationAlert.scale(decorView).setDuration(duration).start();
+                        break;
+                    case "from_left":
+                        AnimationAlert.from_left(decorView).setDuration(duration).start();
+                        break;
+                    case "from_right":
+                        AnimationAlert.from_right(decorView).setDuration(duration).start();
+                        break;
+                }
+
+            }
+        }
+
+    }
 }
 
 
