@@ -120,3 +120,28 @@ dialog_alert.setPositiveButton("Yes");
             }
         });
 ```
+#### Alert with single button (Acknowledgement)
+<a href="https://imgflip.com/gif/2krmme"><img src="https://i.imgflip.com/2krmme.gif" title="made at imgflip.com"/></a>
+#### Use
+AlertAcknowledgement acknowledgement_alert =new AlertAcknowledgement(Main2Activity.this);
+#### Example
+```java
+acknowledgement_alert =new AlertAcknowledgement(Main2Activity.this);
+        acknowledgement_alert.setButtonText("Got It");
+        acknowledgement_alert.setMessage("This is a better version of Alert that you will get. So please support.");
+        acknowledgement_alert.setTitle("This is how it looks");
+        acknowledgement_alert.setAnimation("from_left");
+        acknowledgement_alert.setDuration(2500);
+        acknowledgement_alert.setCanceledOnTouchOutside(false);
+        acknowledgement_alert.show();
+
+        acknowledgement_alert.setOnOkClickedListener(new AlertAcknowledgement.OnOkClicked() {
+            @Override
+            public void status(boolean b) {
+                if(b){
+                    Toast.makeText(Main2Activity.this, "Thank You", Toast.LENGTH_SHORT).show();
+                    acknowledgement_alert.dismiss();
+                }
+            }
+        });
+```
