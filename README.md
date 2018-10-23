@@ -1,4 +1,9 @@
 # CustomAnimationAndDesign
+
+If you like the library please show your support with a star.
+Help me to make it better for other developers.
+Thank You :)
+
 ## Import
 ```
 allprojects {
