@@ -84,4 +84,6 @@ if(prev < i)
             AnimationUtils.wave(viewHolder,false);
         prev=i;
 ```
+
+### Custom Alert with/without Animation
         
