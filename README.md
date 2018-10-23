@@ -86,4 +86,37 @@ if(prev < i)
 ```
 
 ### Custom Alert with/without Animation
-        
+
+#### Animations Supported (for now)
+- Fade -> use as string "fade"
+- Scale -> use as string "scale"
+- From Left -> use as string "from_left"
+- From Right -> use as string "from_right"
+
+#### Alert with two buttons
+<a href="https://imgflip.com/gif/2krk4t"><img src="https://i.imgflip.com/2krk4t.gif" title="made at imgflip.com"/></a>
+#### Use
+CustomDialog dialog_alert = new CustomDialog(Main2Activity.this);
+#### Example
+```java
+CustomDialog dialog_alert  = new CustomDialog(Main2Activity.this);
+dialog_alert.setPositiveButton("Yes");
+        dialog_alert.setNeagtiveButton("No");
+        dialog_alert.setMessage("This is a better version of Alert that you will get." +
+                " Do you like it ?");
+        dialog_alert.setTitle("This is how it looks");
+        dialog_alert.setAnimation("scale"); // If you want ANIMATION use this line
+        dialog_alert.setDuration(2500); // Provide the duration of the animation
+        dialog_alert.setCanceledOnTouchOutside(false);
+        dialog_alert.show();
+
+        dialog_alert.setOnOptionClickListener(new CustomDialog.OnOptionClick() {
+            @Override
+            public void onResult(boolean b) {
+                if(b) {
+                    Toast.makeText(Main2Activity.this, "Yes I Like it", Toast.LENGTH_SHORT).show();
+                    dialog_alert.dismiss();
+                }
+            }
+        });
+```
